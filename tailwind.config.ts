@@ -61,26 +61,26 @@ export default {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      keyframes: {
-        'accordion-down': {
-          from: { height: 0 },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: 0 },
-        },
-        fadeInDown: {
-          '0%': { opacity: '0', transform: 'translate3d(0, -25%, 0)' },
-          '100%': { opacity: '1', transform: 'none' },
-        },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-        fadeInDown: 'fadeInDown .5s linear .4s forwards',
-      },
+      // keyframes: {
+      //   'accordion-down': {
+      //     from: { height: 0 },
+      //     to: { height: 'var(--radix-accordion-content-height)' },
+      //   },
+      //   'accordion-up': {
+      //     from: { height: 'var(--radix-accordion-content-height)' },
+      //     to: { height: 0 },
+      //   },
+      //   fadeInDown: {
+      //     '0%': { opacity: '0', transform: 'translate3d(0, -25%, 0)' },
+      //     '100%': { opacity: '1', transform: 'none' },
+      //   },
+      // },
+      // animation: {
+      //   'accordion-down': 'accordion-down 0.2s ease-out',
+      //   'accordion-up': 'accordion-up 0.2s ease-out',
+      //   fadeInDown: 'fadeInDown .5s linear .4s forwards',
+      // },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate'), require('tailwind-scrollbar')],
 };

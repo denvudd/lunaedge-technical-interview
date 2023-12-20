@@ -1,12 +1,12 @@
-'use client';
-
+/* eslint-disable react/no-children-prop */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import * as React from 'react';
 
 import { Eye, EyeOff, Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Label = React.forwardRef<HTMLLabelElement, React.LabelHTMLAttributes<HTMLLabelElement>>(
-  ({ className, children, ...props }, ref) => (
+  ({ className, children, htmlFor, ...props }, ref) => (
     <label
       ref={ref}
       className={cn(
@@ -15,11 +15,11 @@ const Label = React.forwardRef<HTMLLabelElement, React.LabelHTMLAttributes<HTMLL
       )}
       {...props}
       children={
-        <div className="inline-flex justify-between w-full items-center gap-2">
+        <div className="inline-flex w-full items-center justify-between gap-2">
           <span className="flex items-center gap-2">
             {children} <Info width={12} height={12} />
           </span>
-          <span className="text-gray-400 font-normal">Optional</span>
+          <span className="font-normal text-gray-400">Optional</span>
         </div>
       }
     />
@@ -62,7 +62,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         <span
-          className={cn('absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5 m-0 p-0', {
+          className={cn('absolute left-3 top-1/2 m-0 h-5 w-5 -translate-y-1/2 p-0 text-gray-500', {
             'text-red-400': isError,
             'text-blue-400, opacity-30': disabled,
           })}

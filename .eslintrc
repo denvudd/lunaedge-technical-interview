@@ -19,9 +19,6 @@
     "plugin:tailwindcss/recommended"
   ],
   "rules": {
-    "jsx-a11y/no-static-element-interactions": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/label-has-associated-control": 0,
     "@typescript-eslint/no-unsafe-assignment": 0,
     "@typescript-eslint/no-misused-promises": 0,
     "react/function-component-definition": 0,
@@ -57,7 +54,7 @@
     "tailwindcss/no-custom-classname": 0,
     "prefer-template": 0
   },
-  "ignorePatterns": ["tailwind.config.js", "src/app/api/*"],
+  "ignorePatterns": ["tailwind.config.js"],
   "settings": {
     "tailwindcss": {
       "callees": ["cn"],
