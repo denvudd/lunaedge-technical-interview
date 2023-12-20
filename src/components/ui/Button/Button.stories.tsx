@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { Button, ButtonProps, buttonVariants } from './Button';
+import { Button, buttonVariants } from './Button';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Mail } from 'lucide-react';
 
@@ -49,6 +49,53 @@ export const SelectVariant = () => (
         <span className="w-full font-medium">Ghost</span>
         <div className="block">
           <Button variant="ghost">Button</Button>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2 col-span-1">
+        <span className="w-full font-medium">Disabled Default</span>
+        <div className="block">
+          <Button disabled>Button</Button>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 col-span-1">
+        <span className="w-full font-medium">Disabled Secondary</span>
+        <div className="block">
+          <Button variant="secondary" disabled>
+            Button
+          </Button>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 col-span-1">
+        <span className="w-full font-medium">Disabled Outline</span>
+        <div className="block">
+          <Button variant="outline" disabled>
+            Button
+          </Button>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 col-span-1">
+        <span className="w-full font-medium">Disabled Text</span>
+        <div className="block">
+          <Button variant="text" disabled>
+            Button
+          </Button>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 col-span-1">
+        <span className="w-full font-medium">Disabled Destructive</span>
+        <div className="block">
+          <Button variant="destructive" disabled>
+            Button
+          </Button>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 col-span-1">
+        <span className="w-full font-medium">Disabled Ghost</span>
+        <div className="block">
+          <Button variant="ghost" disabled>
+            Button
+          </Button>
         </div>
       </div>
     </div>
