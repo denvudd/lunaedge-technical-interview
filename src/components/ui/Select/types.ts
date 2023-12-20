@@ -26,6 +26,16 @@ export interface SelectProps {
    * @type boolean
    */
   isSearchable?: boolean;
+  /** If true, the dropdown will be in loading state, disabled and displayed spinner.
+   * @default false
+   * @type boolean
+   */
+  isLoading?: boolean;
+  /** If true, the dropdown will be disabled and cannot be selected.
+   * @default false
+   * @type boolean
+   */
+  disabled?: boolean;
   /** Function to be called when an option is selected. Argument is an array of selected options.
    * @type (option: Option[] | undefined) => void
    */

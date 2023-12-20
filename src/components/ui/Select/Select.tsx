@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Check, ChevronDown, Search, X } from 'lucide-react';
+import { Check, ChevronDown, Loader, Loader2, Search, X } from 'lucide-react';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Variants, motion } from 'framer-motion';
@@ -13,9 +13,11 @@ const Select: React.FC<SelectProps> = ({
   options,
   isMulti = false,
   isSearchable = false,
+  isLoading = false,
   onSelect,
   align = 'full-width',
   placeholder,
+  disabled,
   triggerClassname,
   rootClassname,
   optionClassname,
@@ -139,7 +141,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <div
       className={cn(
-        'bg-background relative w-max cursor-pointer rounded-md text-left transition-all',
+        'relative z-[9999] w-max cursor-pointer rounded-md bg-white text-left transition-all',
         rootClassname,
       )}
       ref={clickOutsideRef}
@@ -147,16 +149,18 @@ const Select: React.FC<SelectProps> = ({
       <button
         ref={inputRef}
         onClick={onTriggerClick}
+        type="button"
+        disabled={disabled ?? isLoading}
         className={cn(
-          `border-input bg-background ring-offset-background placeholder:text-muted-foreground f
-          ocus:ring-ring flex h-10 min-w-[180px] items-center justify-between gap-2 overflow-hidden rounded-md border px-3 py-2 text-sm 
+          `border-input ring-offset-background placeholder:text-muted-foreground f ocus:ring-ring
+          flex h-10 min-w-[180px] items-center justify-between gap-2 overflow-hidden rounded-md border bg-white px-3 py-2 text-sm 
           focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1`,
           triggerClassname,
         )}
       >
         <div
           className={cn(
-            'scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin overflow-x-auto',
+            'scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin z-[9999] overflow-x-auto',
             {
               'text-gray-300': !selectedValue || selectedValue.length === 0,
             },
@@ -180,22 +184,25 @@ const Select: React.FC<SelectProps> = ({
           {!isSelectEmpty && !isSelectMulti && selectedValue[0].label}
         </div>
 
-        <div
-          className={cn('transition-transform', {
-            'rotate-180': isDropdownOpen,
-          })}
-        >
-          <ChevronDown className="h-4 w-4 opacity-50" />
-        </div>
+        {isLoading ? (
+          <div>
+            <Loader2 className="h-4 w-4 animate-spin opacity-50" />
+          </div>
+        ) : (
+          <div
+            className={cn('transition-transform', {
+              'rotate-180': isDropdownOpen,
+            })}
+          >
+            <ChevronDown className="h-4 w-4 opacity-50" />
+          </div>
+        )}
       </button>
 
       <motion.div
         className={cn(
-          `bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out 
-            data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
-            data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 
-            data-[side=top]:slide-in-from-bottom-2 scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin absolute z-50 
-            max-h-96 min-w-[8rem] overflow-auto rounded-md border shadow-md`,
+          `text-secondary-foreground scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin
+           absolute z-[9999] max-h-96 min-w-[8rem] overflow-auto rounded-md border bg-white shadow-md`,
           dropdownClassname,
           {
             'left-0': align === 'left',
@@ -215,7 +222,7 @@ const Select: React.FC<SelectProps> = ({
           <div className="flex items-center border-b px-3">
             <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
             <input
-              className="placeholder:text-muted-foreground flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50"
+              className="placeholder:text-muted-foreground flex h-11 w-full rounded-md bg-white py-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50"
               onChange={onSearch}
               value={searchValue}
               ref={searchRef}

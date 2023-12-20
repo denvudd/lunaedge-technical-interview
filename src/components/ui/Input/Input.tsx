@@ -5,21 +5,26 @@ import * as React from 'react';
 import { Eye, EyeOff, Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const Label = React.forwardRef<HTMLLabelElement, React.LabelHTMLAttributes<HTMLLabelElement>>(
-  ({ className, children, htmlFor, ...props }, ref) => (
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+  isRequired?: boolean;
+}
+
+const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
+  ({ className, children, htmlFor, isRequired = true, ...props }, ref) => (
     <label
       ref={ref}
       className={cn(
         'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
         className,
       )}
+      htmlFor={htmlFor}
       {...props}
       children={
         <div className="inline-flex w-full items-center justify-between gap-2">
           <span className="flex items-center gap-2">
             {children} <Info width={12} height={12} />
           </span>
-          <span className="font-normal text-gray-400">Optional</span>
+          {!isRequired && <span className="font-normal text-gray-400">Optional</span>}
         </div>
       }
     />
