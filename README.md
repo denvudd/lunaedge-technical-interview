@@ -1,3 +1,10 @@
+# Dmytro Yurin, Front-end Developer
+Hi! My name is Dmytro and this is my technical task for Luna Edge! 
+I tried to complete the task in accordance with all the requirements you provided in the project's Readme. The main focus was on the Select component, where I implemented all the necessary functionality that can be reused, and also documented it with JSDoc and Storybook. Additionally, I created Storybook documentation for all UI components. I hope I did everything correctly!
+
+A bit about me:
+I started learning web development over 2 years ago and have over 1.4 years of commercial development experience. I have worked with both plain JavaScript and React. I really enjoy using the Next.js framework and the Server Components approach. I also love Tailwind CSS and plan to explore React Native. I am also interested in backend technologies such as Nest.js, Prisma, MySQL, MongoDB, Express, and Node.js. I have several full-stack projects under my belt. Currently, I am looking for a company to continue growing and developing within a team!
+
 # Luna Edge technical interview
 ## Basic commands
 - Run app: <code>yarn vite</code>
