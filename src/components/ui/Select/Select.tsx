@@ -1,31 +1,37 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Check, ChevronDown, Loader, Loader2, Search, X } from 'lucide-react';
 import React from 'react';
+// libs
+import { Check, ChevronDown, Loader2, Search, X } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 import { Variants, motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useOnClickOutside } from '@/hooks/use-click-outside';
-import { Badge } from '../Badge/Badge';
-import { Option, SelectProps } from './types';
+// components
+import { Badge } from '@/components/ui/Badge/Badge';
+// types
+import { type Option, type SelectProps } from './types';
 
 const Select: React.FC<SelectProps> = ({
   options,
   isMulti = false,
   isSearchable = false,
   isLoading = false,
-  onSelect,
+  onSelect = () => {},
   align = 'full-width',
   placeholder,
   disabled,
   triggerClassname,
   rootClassname,
   optionClassname,
+  isError,
+  value = null,
+  size = 'md',
   dropdownClassname,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
 
-  const [selectedValue, setSelectedValue] = React.useState<Option[] | null>();
+  const [selectedValue, setSelectedValue] = React.useState<Option[] | null>(value ?? null);
   const [searchValue, setSearchValue] = React.useState('');
   const [sortedOptions, setSortedOptions] = React.useState<Option[]>(options);
 
@@ -40,7 +46,7 @@ const Select: React.FC<SelectProps> = ({
   }, [isDropdownOpen]);
 
   const removeOption = React.useCallback(
-    (option: Option) => selectedValue?.filter((o) => o.value !== option.value),
+    (option: Option) => selectedValue?.filter((o) => o.value !== option.value) ?? null,
     [selectedValue],
   );
 
@@ -101,9 +107,9 @@ const Select: React.FC<SelectProps> = ({
       const { value } = e.target;
       setSearchValue(value);
 
-      if (searchValue) {
+      if (!!value) {
         const searchedOptions = options.filter(
-          (option) => option.label.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0,
+          (option) => option.label.toLowerCase().indexOf(value.toLowerCase()) >= 0,
         );
 
         setSortedOptions(searchedOptions);
@@ -141,7 +147,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <div
       className={cn(
-        'relative z-[9999] w-max cursor-pointer rounded-md bg-white text-left transition-all',
+        'relative z-[9999] w-full cursor-pointer rounded-md bg-white text-left transition-all',
         rootClassname,
       )}
       ref={clickOutsideRef}
@@ -153,9 +159,14 @@ const Select: React.FC<SelectProps> = ({
         disabled={disabled ?? isLoading}
         className={cn(
           `border-input ring-offset-background placeholder:text-muted-foreground f ocus:ring-ring
-          flex h-10 min-w-[180px] items-center justify-between gap-2 overflow-hidden rounded-md border bg-white px-3 py-2 text-sm 
-          focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1`,
+          flex h-10 w-full min-w-[180px] items-center justify-between gap-2 overflow-hidden rounded-md border bg-white px-3 py-2 
+          text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1`,
           triggerClassname,
+          {
+            'border-red-400': isError,
+            'py-1, px-2, h-8': size === 'sm',
+            'py-4, px-3, h-11': size === 'lg',
+          },
         )}
       >
         <div
@@ -208,8 +219,10 @@ const Select: React.FC<SelectProps> = ({
             'left-0': align === 'left',
             'right-0': align === 'right',
             'left-0 w-full': align === 'full-width',
+            'border-red-400': isError,
           },
         )}
+        initial={false}
         animate={isDropdownOpen ? 'open' : 'closed'}
         variants={animation}
         transition={{
@@ -219,10 +232,19 @@ const Select: React.FC<SelectProps> = ({
         }}
       >
         {isSearchable && (
-          <div className="flex items-center border-b px-3">
+          <div
+            className={cn('flex items-center border-b px-3', {
+              'border-b-red-400': isError,
+            })}
+          >
             <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
             <input
-              className="placeholder:text-muted-foreground flex h-11 w-full rounded-md bg-white py-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50"
+              className={cn(
+                'placeholder:text-muted-foreground flex h-11 w-full rounded-md bg-white py-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50',
+                {
+                  'py-2, h-9': size === 'sm',
+                },
+              )}
               onChange={onSearch}
               value={searchValue}
               ref={searchRef}
@@ -239,6 +261,8 @@ const Select: React.FC<SelectProps> = ({
               {
                 'opacity-50 font-semibold': isOpenSelected(option),
                 'cursor-default': !isDropdownOpen,
+                'py-1': size === 'sm',
+                'py-2': size === 'lg',
               },
               optionClassname,
             )}
@@ -248,7 +272,16 @@ const Select: React.FC<SelectProps> = ({
                 <Check className="h-4 w-4" />
               </span>
             )}
-            <span>{option.label}</span>
+            <span
+              className={cn({
+                'text-red-400': isError,
+                'text-base': size === 'md',
+                'text-sm': size === 'sm',
+                'text-lg': size === 'lg',
+              })}
+            >
+              {option.label}
+            </span>
           </div>
         ))}
       </motion.div>

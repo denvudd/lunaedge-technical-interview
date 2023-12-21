@@ -1,7 +1,8 @@
-import { cn } from '@/lib/utils';
-import { Button, buttonVariants } from './Button';
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import type { Meta, StoryObj } from '@storybook/react';
 import { Mail } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button, buttonVariants } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -13,52 +14,52 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const SelectVariant = () => (
-  <div className="container flex justify-center mt-10">
-    <div className="grid grid-cols-3 gap-4 w-full">
-      <div className="flex flex-col gap-2 col-span-1">
+  <div className="container mt-10 flex justify-center">
+    <div className="grid w-full grid-cols-3 gap-4">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Default</span>
         <div className="block">
           <Button>Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Secondary</span>
         <div className="block">
           <Button variant="secondary">Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Outline</span>
         <div className="block">
           <Button variant="outline">Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Text</span>
         <div className="block">
           <Button variant="text">Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Destructive</span>
         <div className="block">
           <Button variant="destructive">Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Ghost</span>
         <div className="block">
           <Button variant="ghost">Button</Button>
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Disabled Default</span>
         <div className="block">
           <Button disabled>Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Disabled Secondary</span>
         <div className="block">
           <Button variant="secondary" disabled>
@@ -66,7 +67,7 @@ export const SelectVariant = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Disabled Outline</span>
         <div className="block">
           <Button variant="outline" disabled>
@@ -74,7 +75,7 @@ export const SelectVariant = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Disabled Text</span>
         <div className="block">
           <Button variant="text" disabled>
@@ -82,7 +83,7 @@ export const SelectVariant = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Disabled Destructive</span>
         <div className="block">
           <Button variant="destructive" disabled>
@@ -90,7 +91,7 @@ export const SelectVariant = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Disabled Ghost</span>
         <div className="block">
           <Button variant="ghost" disabled>
@@ -103,39 +104,39 @@ export const SelectVariant = () => (
 );
 
 export const SelectSizes = () => (
-  <div className="container flex justify-center mt-10">
-    <div className="grid grid-cols-3 gap-4 w-full">
-      <div className="flex flex-col gap-2 col-span-1">
+  <div className="container mt-10 flex justify-center">
+    <div className="grid w-full grid-cols-3 gap-4">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Extra Small</span>
         <div className="block">
           <Button size="xs">Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Small</span>
         <div className="block">
           <Button size="sm">Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Base</span>
         <div className="block">
           <Button>Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Large</span>
         <div className="block">
           <Button size="lg">Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Extra Large</span>
         <div className="block">
           <Button size="xl">Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Icon</span>
         <div className="block">
           <Button size="icon">
@@ -148,15 +149,15 @@ export const SelectSizes = () => (
 );
 
 export const Loading = () => (
-  <div className="container flex justify-center mt-10">
-    <div className="grid grid-cols-3 gap-4 w-full">
-      <div className="flex flex-col gap-2 col-span-1">
+  <div className="container mt-10 flex justify-center">
+    <div className="grid w-full grid-cols-3 gap-4">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Default</span>
         <div className="block">
           <Button isLoading>Button</Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Secondary</span>
         <div className="block">
           <Button variant="secondary" isLoading>
@@ -164,7 +165,7 @@ export const Loading = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Outline</span>
         <div className="block">
           <Button variant="outline" isLoading>
@@ -172,7 +173,7 @@ export const Loading = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Text</span>
         <div className="block">
           <Button variant="text" isLoading>
@@ -180,7 +181,7 @@ export const Loading = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Destructive</span>
         <div className="block">
           <Button variant="destructive" isLoading>
@@ -188,7 +189,7 @@ export const Loading = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Ghost</span>
         <div className="block">
           <Button variant="ghost" isLoading>
@@ -196,7 +197,7 @@ export const Loading = () => (
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 col-span-1">
+      <div className="col-span-1 flex flex-col gap-2">
         <span className="w-full font-medium">Icon</span>
         <div className="block">
           <Button size="icon" isLoading>
@@ -209,7 +210,7 @@ export const Loading = () => (
 );
 
 export const AsChild = () => (
-  <div className="container flex justify-center mt-10">
+  <div className="container mt-10 flex justify-center">
     <Button asChild>
       <div>Child</div>
     </Button>
@@ -217,7 +218,7 @@ export const AsChild = () => (
 );
 
 export const StyledWithVariants = () => (
-  <div className="container flex justify-center mt-10">
+  <div className="container mt-10 flex justify-center">
     <a
       href="#"
       target="_blank"
@@ -234,8 +235,8 @@ export const StyledWithVariants = () => (
 );
 
 export const StylingOverides = () => (
-  <div className="container flex justify-center mt-10">
-    <Button className="bg-black text-white hover:bg-white hover:text-black px-8 py-6 rounded-xl">
+  <div className="container mt-10 flex justify-center">
+    <Button className="rounded-xl bg-black px-8 py-6 text-white hover:bg-white hover:text-black">
       Button
     </Button>
   </div>

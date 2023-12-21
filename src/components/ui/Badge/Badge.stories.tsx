@@ -11,51 +11,51 @@ export default meta;
 type Story = StoryObj<typeof Badge>;
 
 export const SelectVariant = () => (
-  <div className="container flex flex-col gap-8 justify-center mt-10">
-    <div className="grid grid-cols-6 gap-8 w-full">
-      <div className="flex gap-6 flex-col col-span-1">
-        <div className="font-medium text-center">Default</div>
-        <div className="w-full flex justify-center flex-col gap-2">
+  <div className="container mt-10 flex flex-col justify-center gap-8">
+    <div className="grid w-full grid-cols-6 gap-8">
+      <div className="col-span-1 flex flex-col gap-6">
+        <div className="text-center font-medium">Default</div>
+        <div className="flex w-full flex-col justify-center gap-2">
           <div className="block text-center">
             <Badge>Badge</Badge>
           </div>
         </div>
       </div>
-      <div className="flex gap-6 flex-col col-span-1">
-        <div className="font-medium text-center">Destructive</div>
-        <div className="w-full flex justify-center flex-col gap-2">
+      <div className="col-span-1 flex flex-col gap-6">
+        <div className="text-center font-medium">Destructive</div>
+        <div className="flex w-full flex-col justify-center gap-2">
           <div className="block text-center">
             <Badge variant="destructive">Badge</Badge>
           </div>
         </div>
       </div>
-      <div className="flex gap-6 flex-col col-span-1">
-        <div className="font-medium text-center">Warning</div>
-        <div className="w-full flex justify-center flex-col gap-2">
+      <div className="col-span-1 flex flex-col gap-6">
+        <div className="text-center font-medium">Warning</div>
+        <div className="flex w-full flex-col justify-center gap-2">
           <div className="block text-center">
             <Badge variant="warning">Badge</Badge>
           </div>
         </div>
       </div>
-      <div className="flex gap-6 flex-col col-span-1">
-        <div className="font-medium text-center">Success</div>
-        <div className="w-full flex justify-center flex-col gap-2">
+      <div className="col-span-1 flex flex-col gap-6">
+        <div className="text-center font-medium">Success</div>
+        <div className="flex w-full flex-col justify-center gap-2">
           <div className="block text-center">
             <Badge variant="success">Badge</Badge>
           </div>
         </div>
       </div>
-      <div className="flex gap-6 flex-col col-span-1">
-        <div className="font-medium text-center">Info</div>
-        <div className="w-full flex justify-center flex-col gap-2">
+      <div className="col-span-1 flex flex-col gap-6">
+        <div className="text-center font-medium">Info</div>
+        <div className="flex w-full flex-col justify-center gap-2">
           <div className="block text-center">
             <Badge variant="info">Badge</Badge>
           </div>
         </div>
       </div>
-      <div className="flex gap-6 flex-col col-span-1">
-        <div className="font-medium text-center">Outline</div>
-        <div className="w-full flex justify-center flex-col gap-2">
+      <div className="col-span-1 flex flex-col gap-6">
+        <div className="text-center font-medium">Outline</div>
+        <div className="flex w-full flex-col justify-center gap-2">
           <div className="block text-center">
             <Badge variant="outline">Badge</Badge>
           </div>
@@ -66,8 +66,8 @@ export const SelectVariant = () => (
 );
 
 export const StylingOverrides = () => (
-  <div className="container flex justify-center mt-10">
-    <Badge className="bg-orange-300 placeholder:text-white border-2 font-medium border-black">
+  <div className="container mt-10 flex justify-center">
+    <Badge className="border-2 border-black bg-orange-300 font-medium placeholder:text-white">
       Badge
     </Badge>
   </div>
